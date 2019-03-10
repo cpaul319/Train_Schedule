@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="UTF-8">
-  <title>Timesheet</title>
+  <title>Train Schedule</title>
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -19,6 +19,7 @@
   
 <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
 <script>
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDU8yfZlU6JfVOdMplTGWMYvCftrp1iSrY",
@@ -31,12 +32,13 @@
   firebase.initializeApp(config);
 
   var database = firebase.database();
-
-  var EmpName = 0;
-var Emp_role = " ";
-var Months_worked =0;
-var monthly_rate = 0;
-var total_billed = 0;
+  var trainName;         //  This variable holds the name of the train
+var destination;        //  This variable holds the destination
+var trainTime;   //  This variable holds first train arrival time
+var currentTime;       //  This variable holds current time
+var nextArrival;       //  This variable holds next arrival time
+var minutesAway;       //  This variable holds how many minutes away is the next train
+var frequency;  
 
 
 </script>
@@ -48,10 +50,10 @@ var total_billed = 0;
 
 </head>
 
-<body>
+<body> 
 
   <div class="container">
-<h1>Timesheet and hours Billing</h1>
+<h1>Train Schedule</h1>
     <br>
 
     <!-- Jumbotron Title -->
@@ -66,22 +68,22 @@ var total_billed = 0;
             <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Employee Role</th>
-                    <th scope="col">Months Worked</th>
-                    <th scope="col">Monthly Rate</th>
-                    <th scope="col">Total Billed</th>
+                    <th scope="col">Train Name</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Frequency(Min)</th>
+                    <th scope="col">Next Arrival</th>
+                    <th scope="col">Minutes Away</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Genius</td>
-                    <td>3</td>
-                    <td>1200</td>
-                    <td>3600</td>
+                    <th scope="row"></th>
+                    <td>Train 5</td>
+                    <td>Columbia MO</td>
+                    <td>15</td>
+                    <td>2</td>
+                     
                   </tr>
                   
                 </tbody>
@@ -103,25 +105,22 @@ var total_billed = 0;
           <div class="card-body">
             <form>
               <div class="form-group">
-                <label for="name">Your Name</label>
-                <input class="form-control" id="bidder-name" type="text">
+                <label for="name">Train Name</label>
+                <input class="form-control" id="train-name" type="text">
               </div>
               <div class="form-group">
-                <label for="employee-role">Employee Role</label>
-                <input class="form-control" id="bidder-price" type="number">
+                <label for="destination">Destination</label>
+                <input class="form-control" id="train-destination" type="text">
               </div>
               <div class="form-group">
-                <label for="months-worked">Months Worked</label>
-                <input class="form-control" id="bidder-price" type="number">
+                <label for="train-time">Train Time(HHmm Military)</label>
+                <input class="form-control" id="train-time" type="number">
               </div>
               <div class="form-group">
-                <label for="monthly-rate">Monthly Rate</label>
-                <input class="form-control" id="bidder-price" type="number">
+                <label for="frequency">Frequency</label>
+                <input class="form-control" id="train_frequency" type="number">
               </div>
-              <div class="form-group">
-                <label for="total-billed">Total Billed</label>
-                <input class="form-control" id="bidder-price" type="number">
-              </div>
+           
               <button class="btn btn-primary" id="submit-bid" type="submit">Submit</button>
             </form>
           </div>
