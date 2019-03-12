@@ -18,30 +18,7 @@
 
   
 <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-<script>
-
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDU8yfZlU6JfVOdMplTGWMYvCftrp1iSrY",
-    authDomain: "timesheet-d1706.firebaseapp.com",
-    databaseURL: "https://timesheet-d1706.firebaseio.com",
-    projectId: "timesheet-d1706",
-    storageBucket: "timesheet-d1706.appspot.com",
-    messagingSenderId: "1059669218531"
-  };
-  firebase.initializeApp(config);
-
-  var database = firebase.database();
-  var trainName;         //  This variable holds the name of the train
-var destination;        //  This variable holds the destination
-var trainTime;   //  This variable holds first train arrival time
-var currentTime;       //  This variable holds current time
-var nextArrival;       //  This variable holds next arrival time
-var minutesAway;       //  This variable holds how many minutes away is the next train
-var frequency;  
-
-
-</script>
+ 
  <style>
  h1{
      text-align: center;
@@ -53,12 +30,12 @@ var frequency;
 <body> 
 
   <div class="container">
-<h1>Train Schedule</h1>
+
     <br>
 
     <!-- Jumbotron Title -->
     <div class="jumbotron">
-     
+        <h1>Train Schedule</h1> 
     </div>
 
     <div class="row">
@@ -78,10 +55,11 @@ var frequency;
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row"></th>
-                    <td>Train 5</td>
+                    <th scope="row">Train 5</th>
+                   
                     <td>Columbia MO</td>
                     <td>15</td>
+                    <td>12:20</td>
                     <td>2</td>
                      
                   </tr>
@@ -100,7 +78,7 @@ var frequency;
       <div class="col-lg-12">
         <div class="card">
           <div class="card-header">
-           Employee Information for billing
+          Add a train
           </div>
           <div class="card-body">
             <form>
