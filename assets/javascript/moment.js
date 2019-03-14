@@ -15,14 +15,15 @@
 
   $("#add_train").on("click", function (event) {
     event.preventDefault();
-
+//grabs the user inforomation from the form
     var trainName = $("#train_name").val().trim();
     var destination = $("#train_destination").val().trim();
     var firstTrain = $("#train_time").val().trim();
     var frequency = $("#train_frequency").val().trim();
     recordCount = 0;
     console.log(recordCount);
-
+//add a new document key for each line of data added and pushes that line to a set of data
+//doesnt overwrite the data that is there
     database.ref().push({
         name: trainName,
         destination: destination,
