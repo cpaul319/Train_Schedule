@@ -58,7 +58,7 @@ database.ref().on("child_added", function (document) {
     
     var trainTime = moment(firstTrain, "hh:mm").subtract(1, "years");
 
-    //number of minutes between first train and now
+ 
     var minuteDifference = moment().diff(moment(trainTime), "minutes");
     var remainder = minuteDifference % frequency;
     arrivalMinutes = frequency - remainder;
